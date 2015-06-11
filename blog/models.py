@@ -1,5 +1,6 @@
 from django.db import models
-from django.utils import timezone
+#from django.utils import timezone
+import datetime
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
@@ -11,7 +12,7 @@ class Post(models.Model):
             blank=True, null=True)
 
     def publish(self):
-        self.published_date = timezone.now()
+        self.published_date = datetime.datetime.now()
         self.save()
 
     def __str__(self):
